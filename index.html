@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Angelo "Meeko" Sapnit | AI Solutions Architect & Lead Engineer</title>
+  <meta name="description" content="Portfolio of production-grade Autonomous Multi-Agent Systems, Generative Media Pipelines, Enterprise RAG, and Quantitative Machine Learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(16, 24, 40, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(16, 185, 129, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-emerald: #10b981;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --accent-amber: #f59e0b;
+      --glass: rgba(15, 23, 42, 0.85);
+      --modal-bg: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Navigation */
+    header {
+      padding: 40px 0 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #34d399;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 50px 0 40px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f8fafc 30%, #34d399 70%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 25px rgba(16, 185, 129, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 40px 0;
+      padding: 24px;
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+    }
+
+    .stat-item h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #38bdf8;
+      margin-bottom: 4px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-item p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Filter & Search Bar */
+    .controls-wrapper {
+      position: sticky;
+      top: 20px;
+      z-index: 50;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 35px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .controls-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+    }
+
+    .pill.active {
+      background: #10b981;
+      color: #042f2e;
+      border-color: #10b981;
+      font-weight: 700;
+    }
+
+    .search-input {
+      padding: 10px 18px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 0.9rem;
+      width: 240px;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-emerald);
+      width: 280px;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .project-card:hover {
+      border-color: var(--card-hover-border);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.1);
+    }
+
+    .card-top {
+      margin-bottom: 20px;
+    }
+
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .project-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .card-summary {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .highlights-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .highlights-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .highlights-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent-emerald);
+      font-weight: bold;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 16px;
+    }
+
+    .btn-card {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-view {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-view:hover {
+      background: rgba(16, 185, 129, 0.28);
+    }
+
+    .btn-copy {
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-copy:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    /* Enterprise Track Record Section */
+    .enterprise-section {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 70px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      max-width: 650px;
+    }
+
+    .gov-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .gov-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .gov-card h4 {
+      font-size: 1.1rem;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .gov-card p {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+
+    /* Services / Engagement Models */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .service-card h4 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Modal Styling */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--modal-bg);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 800px;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 36px;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-body h4 {
+      color: var(--accent-emerald);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 20px;
+      margin-bottom: 6px;
+    }
+
+    .modal-body p, .modal-body li {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      margin-bottom: 12px;
+    }
+
+    .modal-code-box {
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 12px 0 20px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #10b981;
+      color: #042f2e;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 200;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .controls-flex {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-input {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-row">
+      <div style="font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em;">
+        Meeko<span style="color: var(--accent-emerald);">.ai</span>
+      </div>
+      <div class="badge-status">
+        <span class="status-dot"></span> Available for Select Enterprise Retainers & Systems
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 class="hero-title">
+        Architecting <span class="gradient-text">Autonomous AI Systems</span> & Generative Pipelines.
+      </h1>
+      <p class="hero-subtitle">
+        I am <strong>Michael Angelo "Meeko" Sapnit</strong>, Lead AI Engineer and Autonomous Solutions Architect. I design, build, and deploy production-grade multi-agent frameworks, generative media automation engines, private enterprise RAG architectures, and computer vision systems.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Explore AI Works</a>
+        <a href="#contact" class="btn btn-secondary">Book Strategic Consultation</a>
+      </div>
+    </section>
+
+    <!-- Key Metrics Stats -->
+    <section class="stats-grid">
+      <div class="stat-item">
+        <h3>15+</h3>
+        <p>Production AI Systems</p>
+      </div>
+      <div class="stat-item">
+        <h3>7</h3>
+        <p>Specialized Domains</p>
+      </div>
+      <div class="stat-item">
+        <h3>4</h3>
+        <p>Institutional POCs</p>
+      </div>
+      <div class="stat-item">
+        <h3>$0</h3>
+        <p>CapEx Cloudless Deployments</p>
+      </div>
+    </section>
+
+    <!-- Interactive Filter & Search Controls -->
+    <div class="controls-wrapper" id="projects">
+      <div class="controls-flex">
+        <div class="filter-pills" id="categoryFilters">
+          <button class="pill active" data-category="all">All Works (15)</button>
+          <button class="pill" data-category="agents">Autonomous Agents (3)</button>
+          <button class="pill" data-category="video">Generative Video (4)</button>
+          <button class="pill" data-category="rag">Enterprise RAG (3)</button>
+          <button class="pill" data-category="mobile">Mobile & Vision (3)</button>
+          <button class="pill" data-category="ml">Quant & ML (2)</button>
+        </div>
+        <input type="text" id="projectSearch" class="search-input" placeholder="Search tech or project...">
+      </div>
+    </div>
+
+    <!-- Dynamic Projects Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Cards rendered via JS -->
+    </div>
+
+    <!-- Institutional & Government Engagements -->
+    <section class="enterprise-section">
+      <h2 class="section-title">Institutional Deployments & Advisory</h2>
+      <p class="section-sub">Delivering boardroom-aligned strategic roadmaps and high-stakes technical proofs-of-concept for government entities and leading conglomerates.</p>
+      <div class="gov-grid">
+        <div class="gov-card">
+          <h4>Ayala Land / APMC</h4>
+          <p>Turnkey Parking-as-a-Service (PaaS) proposal eliminating CBD bottleneck congestion across prime Makati estates with zero upfront CapEx.</p>
+        </div>
+        <div class="gov-card">
+          <h4>Philippine Army TRACOM</h4>
+          <p>AI-assisted training management system featuring performance diagnostics, remedial learning recommendations, and quad-lingual i18n.</p>
+        </div>
+        <div class="gov-card">
+          <h4>Quezon City DRRMO</h4>
+          <p>Multi-feed emergency alert matrix and disaster command system proof-of-concept for the city mayor and disaster council.</p>
+        </div>
+        <div class="gov-card">
+          <h4>Philippine Postal Corporation</h4>
+          <p>Automated public complaint ingestion and ARTA 8888 compliance workflow restructuring.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section style="margin-bottom: 70px;" id="services">
+      <h2 class="section-title">Client Engagement Models</h2>
+      <p class="section-sub">Flexible collaboration models structured for enterprise impact and rapid outcome delivery.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h4>Fractional AI Lead</h4>
+          <p>Ongoing executive technical leadership, vendor vetting, architecture reviews, and multi-agent roadmap steering.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h4>Custom Autonomous Agents</h4>
+          <p>End-to-end engineering of multi-agent sales engines, automated research bots, and autonomous operations workflows.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎬</div>
+          <h4>Generative Media Pipelines</h4>
+          <p>Automated video cutting, dynamic subtitle rendering, neural voiceover, and mobile emulator publishing engines.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔒</div>
+          <h4>Private Enterprise RAG</h4>
+          <p>Air-gapped, zero-leakage knowledge assistants grounded on internal company handbooks, SOPs, and proprietary databases.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Consultation Section -->
+    <section class="enterprise-section" id="contact" style="text-align: center; background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.7) 100%);">
+      <h2 class="section-title" style="margin-bottom: 12px;">Ready to Deploy Autonomous AI in Your Business?</h2>
+      <p class="section-sub" style="margin: 0 auto 30px; max-width: 600px;">
+        Let's discuss your enterprise requirements, custom agentic workflows, or generative automation pipelines.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <a href="mailto:sapnit.michaelangelo@gmail.com?subject=Strategic%20AI%20Consultation%20Inquiry" class="btn btn-primary">
+          Send Email Inquiry
+        </a>
+        <button class="btn btn-secondary" onclick="copyContact()">
+          Copy Contact Info
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Container -->
+  <div class="modal-backdrop" id="caseModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Michael Angelo "Meeko" Sapnit. All rights reserved.</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #64748b;">Hosted publicly via GitHub Pages • Built for High-Impact Enterprise Deliverables</p>
+    </div>
+  </footer>
+
+  <script>
+    const projects = [
+      {
+        id: "liso",
+        title: "LISO AI Engagement Engine",
+        category: "agents",
+        tag: "Autonomous Multi-Agent",
+        summary: "Enterprise 5-agent pipeline that discovers high-value creators, scores aesthetic fit, generates 3-touch cadences, and triggers physical direct mail postcards with dynamic QR portals.",
+        highlights: [
+          "5 specialized agents (Content, Artist Discovery, Business Discovery, Outreach, Direct Mail)",
+          "Bespoke physical postcard generation with dynamic QR tracking leading to private VIP portals",
+          "Interactive teleprompter SDR calling suite with real-time objection handling"
+        ],
+        tech: ["Next.js", "Node.js", "SQLite", "Tailwind CSS", "Prompt Chains"],
+        problem: "High-ticket enterprise outreach suffers from generic bulk emails and disconnected SDR follow-ups that produce abysmal response rates.",
+        architecture: "Continuous trend and corporate registry ingestion feeds discovery agents. Qualified leads generate dynamic physical print postcards while populating interactive teleprompter scripts for human sales reps.",
+        roi: "Achieves 4x higher engagement via multi-channel digital + physical touchpoints while cutting prospect enrichment time by 85%."
+      },
+      {
+        id: "tiktok",
+        title: "TikTok Shop Affiliate Engine",
+        category: "video",
+        tag: "Generative Video & Hardware",
+        summary: "Autonomous AI engine that scrapes viral Philippine trends (#budolfinds), writes bilingual Taglish scripts, renders 9:16 videos, and anchors native Yellow Basket product links via Android emulator automation.",
+        highlights: [
+          "Viral Taglish copywriting: Hook -> Problem -> Solution -> Yellow Basket CTA",
+          "Neural voice synthesis via Edge-TTS with word-aligned animated karaoke subtitles",
+          "Android Debug Bridge (ADB) automation on MuMu Player 12 for native product link anchoring"
+        ],
+        tech: ["Python", "FFmpeg", "Edge-TTS", "PIL", "ADB", "MuMu Player 12"],
+        problem: "Scaling TikTok Shop affiliate revenue requires generating 20+ vertical videos daily and tedious manual tapping on mobile apps to attach product links.",
+        architecture: "Python trend hunter finds top commission products -> Generates bilingual script -> Synthesizes neural audio -> Composites 1080x1920 video with dynamic visual pointers -> ADB script pushes video to Android gallery and anchors the Yellow Basket product link.",
+        roi: "Enables zero-touch daily publication of 15-30 conversion-optimized videos without manual editing or mobile phone tapping."
+      },
+      {
+        id: "autoclipper",
+        title: "Auto-Clipper Studio & Streamer Radar",
+        category: "video",
+        tag: "Real-Time AI & Audio",
+        summary: "Autonomous video clipping studio and live streamer radar that connects to Twitch IRC & Kick Pusher WebSockets, detecting viral moments via chat velocity spikes (>3x baseline) and Faster-Whisper.",
+        highlights: [
+          "Live Streamer Radar monitoring 16+ top creators in real time",
+          "Instant chat velocity spike detection triggering automated clip generation",
+          "9:16 vertical re-framing: Split-screen (facecam + gameplay), blurred background, karaoke captions"
+        ],
+        tech: ["Python", "Faster-Whisper", "PyTorch", "WebSockets", "FFmpeg"],
+        problem: "Live content creators and clipping networks miss breaking viral moments because human editors cannot watch multiple 8-hour live streams simultaneously.",
+        architecture: "WebSocket connections continuously calculate chat message frequency. When velocity surges >300%, the engine triggers Whisper transcription, audio RMS peak verification, and vertical split-screen rendering.",
+        roi: "Cuts viral short-form delivery time from hours down to 90 seconds after a live event occurs."
+      },
+      {
+        id: "beatsde",
+        title: "Beat-SDE Studio",
+        category: "video",
+        tag: "Audio-Driven Cinematic AI",
+        summary: "Cinematic beat-synced video generator for Same Day Edits (SDE) and weddings. Features 4-act story arc dynamic pacing, radiant bass drop flashes, and Ken Burns photo motion.",
+        highlights: [
+          "4-act story arc: Intro atmosphere, rhythmic build-up, 0.35s climax cuts, lingering outro",
+          "Radiant exposure bloom synchronized to major bass downbeats",
+          "Smooth cubic Ken Burns pan/zoom transforms for still wedding photography"
+        ],
+        tech: ["Python", "Librosa", "FFmpeg", "MoviePy", "PIL"],
+        problem: "Creating high-energy cinematic Same Day Edits requires hours of frame-accurate beat-matching that fatigues video editors during tight wedding reception deadlines.",
+        architecture: "Librosa analyzes the master audio track for downbeats, tempo shifts, and energy drops. The video assembler assigns footage based on narrative acts and injects exposure bloom flashes at climax drops.",
+        roi: "Reduces highlight edit rendering time by 80%, allowing videographers to deliver polished SDE reels during live wedding receptions."
+      },
+      {
+        id: "aira",
+        title: "AIRA Command Center v5",
+        category: "agents",
+        tag: "Spatial 3D O/S & Copilot",
+        summary: "Cognitive spatial 3D command center and synchronous 5-pane LED video wall matrix with an embedded agentic copilot for operations tracking, pipeline analysis, and deck generation.",
+        highlights: [
+          "Three.js & WebGL spatial 3D command console running completely locally",
+          "5-pane synchronous LED video wall matrix for emergency and executive operations",
+          "Autonomous copilot (chat_with_copilot_agentic) automating spreadsheet P&L and PowerPoint decks"
+        ],
+        tech: ["FastAPI", "Python", "Three.js", "WebGL", "python-pptx", "DeepSeek API"],
+        problem: "Operations centers require holistic situational visibility across multiple feeds without cloud latency or security risks.",
+        architecture: "Decoupled from cloud tunnels into a zero-latency local FastAPI architecture. Bridges Three.js spatial viewports with live Excel accounting and automated boardroom PPTX exporters.",
+        roi: "Empowers executive teams with instant multi-feed situational awareness and automated corporate reporting."
+      },
+      {
+        id: "tracom",
+        title: "TRACOM LMS (Philippine Army)",
+        category: "rag",
+        tag: "Defense & Education AI",
+        summary: "Learning Management System for the Philippine Army Training Command (Camp O'Donnell) featuring AI-powered corrective training recommendations and quad-lingual i18n.",
+        highlights: [
+          "AI Diagnostic Engine recommending targeted remedial modules for cadets",
+          "Dual-role conversational assistant for students and faculty training logistics",
+          "Quad-lingual localization: English, Filipino, Cebuano, and Ilocano"
+        ],
+        tech: ["React 18", "TypeScript", "Tailwind CSS", "Express.js", "SQLite", "Drizzle ORM"],
+        problem: "Tracking individual performance across 15+ specialized military branch schools leads to training bottlenecks and delayed remedial interventions.",
+        architecture: "Diagnostic test results are analyzed by an evaluation engine that cross-references branch school syllabi to prescribe immediate corrective study plans.",
+        roi: "Standardizes diagnostic tracking across all branch schools and reduces remedial curriculum assignment time."
+      },
+      {
+        id: "hrbot",
+        title: "Enterprise HR Policy RAG Assistant",
+        category: "rag",
+        tag: "Enterprise RAG & Privacy",
+        summary: "DeepSeek-powered RAG assistant that retrieves employee handbook policies, benefits, and labor rules with personalized employee leave and payroll grounding.",
+        highlights: [
+          "Strict RAG document retrieval preventing hallucinated HR advice",
+          "Dynamic user context injection (leave balances, withholding taxes, employment status)",
+          "Modern FastAPI + React Vite architecture"
+        ],
+        tech: ["FastAPI", "SQLAlchemy", "SQLite", "OpenAI / DeepSeek", "React", "Vite"],
+        problem: "HR departments spend up to 40% of their working hours answering repetitive employee questions regarding leave balances, policy citations, and benefits.",
+        architecture: "Employee handbook documents are chunked and indexed. When an employee asks a question, their private profile data is injected alongside relevant policy excerpts into the LLM prompt.",
+        roi: "Deflects over 75% of routine HR inquiries while ensuring 100% policy-compliant answers."
+      },
+      {
+        id: "commis",
+        title: "Commis AI — F&B Kitchen Platform",
+        category: "mobile",
+        tag: "Vertical SaaS & Mobile AI",
+        summary: "Flutter restaurant operations and kitchen management system featuring a DeepSeek AI Sous-Chef, demand forecasting, purchase orders, and PayMongo integration.",
+        highlights: [
+          "DeepSeek AI Sous-Chef (sous_chat.dart) for recipe scaling and prep troubleshooting",
+          "Predictive inventory depletion and ingredient demand forecasting",
+          "Real-time kitchen dispatch screens and Supabase sync"
+        ],
+        tech: ["Flutter", "Dart", "Supabase", "DeepSeek API", "PayMongo"],
+        problem: "Independent restaurants suffer from food waste, unexpected ingredient run-outs, and chaotic kitchen prep communications.",
+        architecture: "Flutter cross-platform client with Riverpod state management. DeepSeek service powers conversational kitchen assistance while mathematical models project inventory depletion rates.",
+        roi: "Reduces kitchen ingredient waste by up to 22% through predictive prep forecasting."
+      },
+      {
+        id: "meetingminutes",
+        title: "MeetingMinutes AI (Native Android)",
+        category: "mobile",
+        tag: "Native Mobile & Speech AI",
+        summary: "Native Android application built in Kotlin & Jetpack Compose that captures meeting audio, transcribes speech, and structures executive minutes into action items and decisions.",
+        highlights: [
+          "Hardware-integrated audio capture pipeline with Clean Architecture & Dagger Hilt",
+          "Structured JSON extraction: Executive Summary, Key Decisions, Action Items with Owners",
+          "Room local database caching with exportable meeting briefs"
+        ],
+        tech: ["Kotlin", "Jetpack Compose", "Room DB", "Dagger Hilt", "DeepSeek API"],
+        problem: "Executives spend hours manually typing meeting notes and often fail to document actionable follow-up items.",
+        architecture: "Native Android AudioRecord manager captures high-fidelity audio, passes text to DeepSeek with strict JSON schema prompts, and persists structured entities to Room DB.",
+        roi: "Delivers ready-to-circulate executive minutes immediately upon meeting conclusion."
+      },
+      {
+        id: "gemstone",
+        title: "GemStoneAI — Mineral Vision",
+        category: "mobile",
+        tag: "Computer Vision & Colorimetry",
+        summary: "Mobile & web computer vision app that extracts mineral color profiles in CIELAB color space, classifies specimens, and calculates rarity grading badges with valuation estimates.",
+        highlights: [
+          "Contour segmentation and K-means color clustering in CIELAB color space",
+          "Automated saturation and clarity grading against mineralogical database",
+          "Cross-platform Expo React Native with responsive camera interface"
+        ],
+        tech: ["React Native", "Expo", "TypeScript", "Colorimetry Algorithms"],
+        problem: "Field gemstone identification and preliminary grading traditionally require expensive laboratory spectrometers.",
+        architecture: "Camera frames undergo background suppression, specimen bounding, and multi-swatch color extraction to evaluate saturation and purity against mineral databases.",
+        roi: "Provides instant preliminary optical appraisal for field collectors and jewelry retailers."
+      },
+      {
+        id: "mediaforge",
+        title: "MediaForge API & LaMa Inpainting",
+        category: "mobile",
+        tag: "Deep Learning & Micro-SaaS",
+        summary: "Self-hosted RapidAPI micro-SaaS providing deep learning LaMa object/watermark inpainting and multi-platform media stream extraction with $0 hosting cost.",
+        highlights: [
+          "LaMa deep learning inpainting using Fourier convolutions for seamless object erasure",
+          "Webpage-to-Markdown cleanser stripping trackers and cookies for LLM RAG pipelines",
+          "Secure Cloudflare Tunnel exposure from local hardware to RapidAPI Marketplace"
+        ],
+        tech: ["Python", "FastAPI", "PyTorch", "LaMa Inpainting", "Cloudflare Tunnels"],
+        problem: "Commercial inpainting APIs charge hefty subscription fees and expose user data to third-party clouds.",
+        architecture: "Runs state-of-the-art LaMa neural networks locally with GPU acceleration. Exposed to global developers via secure Cloudflare Tunnels with zero recurring server hosting costs.",
+        roi: "Generates micro-SaaS API revenue while running 24/7 at $0 server cost."
+      },
+      {
+        id: "crypto",
+        title: "Crypto-Signals ML Engine",
+        category: "ml",
+        tag: "Quantitative ML & Trading",
+        summary: "Directional price prediction engine that trains timeframe-specific XGBoost classifiers using walk-forward validation and aggregates multi-indicator technical filters.",
+        highlights: [
+          "Walk-forward chronological train/test split preventing forward data leakage",
+          "Comprehensive feature extraction: RSI, MACD, Bollinger Bands, ATR, Volume Profile",
+          "Probabilistic risk scoring rejecting low-conviction setups"
+        ],
+        tech: ["Python", "XGBoost", "Scikit-learn", "Pandas", "CCXT"],
+        problem: "Traditional technical indicators produce high rates of false breakout signals during choppy market regimes.",
+        architecture: "Fetches live OHLCV data from Binance, generates 50-candle feature lookbacks, executes XGBoost probability modeling, and filters trades through volatility thresholds.",
+        roi: "Achieves superior signal precision by filtering out over 65% of false breakout trades."
+      },
+      {
+        id: "politiscrape",
+        title: "PolitiScrape Intelligence Engine",
+        category: "ml",
+        tag: "NLP & Bot Detection",
+        summary: "Multi-platform public intelligence tool that scrapes conversations across Reddit, YouTube, X, FB, and TikTok to analyze sentiment polarization and detect astroturfing bot accounts.",
+        highlights: [
+          "Concurrent scraping across 5 major social networks",
+          "Heuristic bot detection auditing account age, cadence, and repetitive phrases",
+          "Executive reputation advisory reports with soundbite quote extraction"
+        ],
+        tech: ["Python", "Click", "NLTK", "BeautifulSoup4", "Regex Heuristics"],
+        problem: "Public figures and brands struggle to distinguish genuine grassroots sentiment from organized bot astroturfing campaigns.",
+        architecture: "Parallel scraper workers ingest public commentary, run sentiment classification and lexical quote extraction, and assign bot probability scores based on behavior patterns.",
+        roi: "Empowers PR and strategy teams with verified organic public sentiment data."
+      },
+      {
+        id: "strikefactory",
+        title: "Strike Factory & Vibe Gig Hunter",
+        category: "agents",
+        tag: "Autonomous Outbound Pipeline",
+        summary: "Autonomous market scanner and outbound pipeline engine that identifies freelance developer opportunities, scrapes creator targets, and packages bespoke pitches.",
+        highlights: [
+          "Ingests projects from Freelancer REST API and GitHub Bounties (Algora, IssueHunt)",
+          "Automated Creator Strike pipeline: cuts sample clips, drafts proposals, and packages deliverables",
+          "Persistent SQLite leads management database"
+        ],
+        tech: ["Python", "Click", "SQLite", "Playwright", "Faster-Whisper"],
+        problem: "Freelance business development is tedious, requiring hours of manual proposal drafting and speculative work.",
+        architecture: "Scanners discover high-value bounties -> Strike pipeline automatically renders customized proof-of-work samples -> Pitch generator produces tailored outbound proposals.",
+        roi: "Enables instant outbound response to fresh developer contracts within 5 minutes of listing."
+      },
+      {
+        id: "explainer",
+        title: "Explainer Studio",
+        category: "video",
+        tag: "Autonomous Video Studio",
+        summary: "Storyboard-to-video production pipeline that transforms text narratives into complete cinematic vertical explainers with AI image direction and Edge-TTS.",
+        highlights: [
+          "Storyboard JSON orchestration defining scene prompts, camera motion, and voice scripts",
+          "Automated Ken Burns camera motions (zoom_in, pan_left, zoom_out)",
+          "Word-aligned subtitle compositing and multi-scene FFmpeg concatenation"
+        ],
+        tech: ["Python", "Edge-TTS", "FFmpeg", "PIL"],
+        problem: "Producing animated or narrated explainer videos requires coordinating scriptwriters, voice actors, and video editors.",
+        architecture: "Takes a structured scene storyboard, requests neural voice generation, composites pan/zoom motion on high-res AI visuals, and exports finished 1080x1920 video reels.",
+        roi: "Produces complete broadcast-ready explainer reels from raw scripts in under 3 minutes."
+      }
+    ];
+
+    // Render Projects
+    const grid = document.getElementById('projectsGrid');
+    const filters = document.getElementById('categoryFilters');
+    const search = document.getElementById('projectSearch');
+
+    function renderProjects(items) {
+      grid.innerHTML = items.map(p => `
+        <div class="project-card" data-category="${p.category}">
+          <div class="card-top">
+            <span class="card-tag">${p.tag}</span>
+            <h3>${p.title}</h3>
+            <p class="card-summary">${p.summary}</p>
+            <ul class="highlights-list">
+              ${p.highlights.map(h => `<li>${h}</li>`).join('')}
+            </ul>
+          </div>
+          <div>
+            <div class="tech-stack">
+              ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+            </div>
+            <div class="card-actions">
+              <button class="btn-card btn-view" onclick="openModal('${p.id}')">View Case Study</button>
+              <button class="btn-card btn-copy" onclick="copyPitch('${p.id}')">Copy Pitch</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderProjects(projects);
+
+    // Filtering logic
+    filters.addEventListener('click', (e) => {
+      if (e.target.classList.contains('pill')) {
+        document.querySelectorAll('.pill').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        const cat = e.target.getAttribute('data-category');
+        applyFilters(cat, search.value.trim().toLowerCase());
+      }
+    });
+
+    // Search logic
+    search.addEventListener('input', (e) => {
+      const activeCat = document.querySelector('.pill.active').getAttribute('data-category');
+      applyFilters(activeCat, e.target.value.trim().toLowerCase());
+    });
+
+    function applyFilters(category, query) {
+      const filtered = projects.filter(p => {
+        const matchesCat = category === 'all' || p.category === category;
+        const matchesQuery = query === '' || 
+          p.title.toLowerCase().includes(query) ||
+          p.summary.toLowerCase().includes(query) ||
+          p.tech.some(t => t.toLowerCase().includes(query));
+        return matchesCat && matchesQuery;
+      });
+      renderProjects(filtered);
+    }
+
+    // Modal logic
+    const modal = document.getElementById('caseModal');
+    const modalContent = document.getElementById('modalContent');
+
+    function openModal(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+
+      modalContent.innerHTML = `
+        <span class="card-tag">${p.tag}</span>
+        <h2 style="font-size: 1.8rem; margin-bottom: 8px; color: white;">${p.title}</h2>
+        <div class="tech-stack" style="margin-bottom: 20px;">
+          ${p.tech.map(t => `<span class="tech-pill">${t}</span>`).join('')}
+        </div>
+        
+        <div class="modal-body">
+          <h4>Client Problem & Market Friction</h4>
+          <p>${p.problem}</p>
+          
+          <h4>AI Architecture & Methodology</h4>
+          <p>${p.architecture}</p>
+          
+          <h4>Quantifiable Business Impact & ROI</h4>
+          <p>${p.roi}</p>
+          
+          <h4>Key Engineering Deliverables</h4>
+          <ul>
+            ${p.highlights.map(h => `<li>${h}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; gap: 12px;">
+          <button class="btn btn-primary" onclick="copyPitch('${p.id}')">Copy Executive Summary</button>
+          <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+        </div>
+      `;
+      modal.classList.add('open');
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+    }
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Copying pitch paragraphs
+    function copyPitch(id) {
+      const p = projects.find(item => item.id === id);
+      if (!p) return;
+      const text = `Project: ${p.title}\nRole: Lead AI Engineer & Architect (Michael Angelo Sapnit)\nDomain: ${p.tag}\nSummary: ${p.summary}\nArchitecture: ${p.architecture}\nImpact: ${p.roi}\nTech Stack: ${p.tech.join(', ')}`;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Case study brief copied to clipboard!");
+      });
+    }
+
+    function copyContact() {
+      const text = `Michael Angelo "Meeko" Sapnit\nLead AI Engineer & Solutions Architect\nEmail: sapnit.michaelangelo@gmail.com\nSpecialties: Autonomous Multi-Agent Systems, Generative Media Pipelines, Enterprise RAG, Computer Vision`;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Contact information copied!");
+      });
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => {
+        t.classList.remove('show');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
