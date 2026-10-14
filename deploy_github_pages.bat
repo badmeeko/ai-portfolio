@@ -18,7 +18,16 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-echo [1/4] Initializing local repository...
+echo [1/5] Checking Git identity...
+git config user.name >nul 2>nul
+if %errorlevel% neq 0 (
+    echo Setting default local Git author name and email...
+    git config user.name "Michael Angelo Sapnit"
+    git config user.email "sapnit.michaelangelo@gmail.com"
+)
+
+echo.
+echo [2/5] Initializing local repository...
 if not exist ".git" (
     git init
     git branch -M main
@@ -28,17 +37,17 @@ if not exist ".git" (
 )
 
 echo.
-echo [2/4] Staging and committing files...
+echo [3/5] Staging and committing files...
 git add .
 git commit -m "Deploy AI Portfolio showcase to GitHub Pages" 2>nul
 if %errorlevel% equ 0 (
     echo Changes committed successfully.
 ) else (
-    echo No new changes to commit.
+    echo Working tree up-to-date.
 )
 
 echo.
-echo [3/4] Checking remote origin...
+echo [4/5] Checking remote origin...
 git remote get-url origin >nul 2>nul
 if %errorlevel% neq 0 (
     echo No remote origin detected.
@@ -63,7 +72,7 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo [4/4] Pushing to GitHub (branch: main)...
+echo [5/5] Pushing to GitHub (branch: main)...
 git push -u origin main
 if %errorlevel% neq 0 (
     echo.

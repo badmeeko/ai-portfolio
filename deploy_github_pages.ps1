@@ -1,11 +1,3 @@
-<#
-.SYNOPSIS
-    Automated GitHub Pages Deployment Script for AI Portfolio
-.DESCRIPTION
-    Initializes git repository, commits portfolio assets, binds remote origin,
-    and pushes to main branch for instant GitHub Pages hosting.
-#>
-
 [CmdletBinding()]
 param(
     [string]$RepoUrl = ""
@@ -25,7 +17,15 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-Write-Host "[1/4] Initializing local git repository..." -ForegroundColor Yellow
+Write-Host "[1/5] Checking Git identity..." -ForegroundColor Yellow
+$userName = git config user.name 2>$null
+if (-not $userName) {
+    git config user.name "Michael Angelo Sapnit"
+    git config user.email "sapnit.michaelangelo@gmail.com"
+    Write-Host "Configured default local Git author identity." -ForegroundColor Green
+}
+
+Write-Host "[2/5] Initializing local git repository..." -ForegroundColor Yellow
 if (-not (Test-Path ".git")) {
     git init
     git branch -M main
@@ -34,7 +34,7 @@ if (-not (Test-Path ".git")) {
     Write-Host "Existing git repository found." -ForegroundColor DarkGray
 }
 
-Write-Host "`n[2/4] Staging and committing files..." -ForegroundColor Yellow
+Write-Host "`n[3/5] Staging and committing files..." -ForegroundColor Yellow
 git add .
 $status = git status --porcelain
 if ($status) {
@@ -44,7 +44,7 @@ if ($status) {
     Write-Host "Working tree clean, no new changes to commit." -ForegroundColor DarkGray
 }
 
-Write-Host "`n[3/4] Configuring remote origin..." -ForegroundColor Yellow
+Write-Host "`n[4/5] Configuring remote origin..." -ForegroundColor Yellow
 $currentOrigin = git remote get-url origin 2>$null
 if (-not $currentOrigin) {
     if (-not $RepoUrl) {
@@ -65,7 +65,7 @@ if (-not $currentOrigin) {
     Write-Host "Using configured remote: $currentOrigin" -ForegroundColor Green
 }
 
-Write-Host "`n[4/4] Pushing to GitHub (branch: main)..." -ForegroundColor Yellow
+Write-Host "`n[5/5] Pushing to GitHub (branch: main)..." -ForegroundColor Yellow
 git push -u origin main
 
 if ($LASTEXITCODE -eq 0) {
